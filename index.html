@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>АвтоБрат — выкуп авто в Омске дорого, срочно, за час</title>
+    <meta name="description"
+        content="АвтоБрат — срочный выкуп авто в Омске. Оценка за 5 минут, выезд по городу, деньги сразу. Звоните +7 (908) 106-09-20">
+    <style>
+        :root {
+            --yellow: #feaf06;
+            --dark: #1a1a1a;
+            --white: #fff;
+            --light-gray: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1170px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: var(--dark);
+            color: var(--white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--yellow);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--white);
+            font-size: 14px;
+            display: block;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .header-phone a {
+            color: var(--yellow);
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .header-phone a:hover {
+            color: #fff;
+        }
+
+        .header-btn {
+            background: var(--yellow);
+            color: #000;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 16px;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .header-btn:hover {
+            background: #e09a00;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            color: var(--white);
+            padding: 60px 0;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--yellow);
+        }
+
+        .hero-steps {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .hero-step {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .hero-step b {
+            color: var(--yellow);
+            font-size: 20px;
+            display: block;
+        }
+
+        .form-block {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-block h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .form-block h2 span {
+            color: var(--yellow);
+            background: #000;
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--yellow);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--yellow);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-submit:hover {
+            background: #e09a00;
+            transform: translateY(-2px);
+        }
+
+        .form-note {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            margin-top: 10px;
+        }
+
+        .success-msg {
+            display: none;
+            text-align: center;
+            color: green;
+            font-weight: 700;
+            padding: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 18px;
+        }
+
+        .offer {
+            background: var(--yellow);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .offer h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .offer-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .offer-list li {
+            background: #000;
+            color: var(--yellow);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .work {
+            padding: 70px 0;
+            background: var(--light-gray);
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .work-item {
+            background: var(--white);
+            padding: 25px 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .work-num {
+            width: 50px;
+            height: 50px;
+            background: var(--yellow);
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .work-item b {
+            color: var(--yellow);
+        }
+
+        .why-us {
+            padding: 70px 0;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .why-item {
+            text-align: center;
+            padding: 30px;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .why-item:hover {
+            border-color: var(--yellow);
+            transform: translateY(-5px);
+        }
+
+        .why-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .cta {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .cta h2 span {
+            color: var(--yellow);
+        }
+
+        .cta-phone {
+            font-size: 32px;
+            color: var(--yellow);
+            text-decoration: none;
+            font-weight: 700;
+            display: block;
+            margin: 20px 0;
+        }
+
+        .cta-btn {
+            background: var(--yellow);
+            color: #000;
+            padding: 16px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: #e09a00;
+        }
+
+        .footer {
+            background: #111;
+            color: #666;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 14px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            background: none;
+            border: none;
+        }
+
+        .modal h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .modal .check-icon {
+            font-size: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-phone a {
+                font-size: 18px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-steps {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="/" class="logo">АВТОБРАТ<span>быстро • дорого • надёжно</span></a>
+            <div class="header-phone">
+                <a href="tel:+79081060920">+7 (908) 106-09-20</a>
+            </div>
+            <a href="#form" class="header-btn">Узнать стоимость</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div>
+                <h1>Срочный выкуп авто<br><span>В ОМСКЕ</span> за час</h1>
+                <div class="hero-steps">
+                    <div class="hero-step"><b>30 мин</b> Оформление</div>
+                    <div class="hero-step"><b>100%</b> Договор</div>
+                    <div class="hero-step"><b>Сразу</b> Наличные</div>
+                </div>
+                <p style="font-size:18px; margin-bottom:10px;">🚗 Выезд по всему Омску и области</p>
+                <p style="font-size:18px;">💰 До 90% от рыночной цены</p>
+            </div>
+            <div class="form-block" id="form">
+                <h2>Узнай стоимость <span>ПРЯМО СЕЙЧАС!</span></h2>
+                <form id="carForm">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Ваш телефон*" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Узнать стоимость</button>
+                    <p class="form-note">Перезвоним в течение 15 минут</p>
+                </form>
+                <div class="success-msg" id="successMsg">
+                    <p style="font-size:40px;">✅</p>
+                    <p>Заявка отправлена!</p>
+                    <p>Мы перезвоним вам в ближайшее время.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="offer">
+        <div class="container">
+            <h3>Выкупаем любые автомобили</h3>
+            <ul class="offer-list">
+                <li>Исправные</li>
+                <li>После аварии</li>
+                <li>Кредитные</li>
+                <li>Залоговые</li>
+                <li>Арестованные</li>
+                <li>Премиум</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="work">
+        <div class="container">
+            <div class="section-title">
+                <h2>Как мы работаем</h2>
+                <p>От звонка до покупки — всего 30 минут</p>
+            </div>
+            <div class="work-grid">
+                <div class="work-item">
+                    <div class="work-num">1</div>
+                    <b>2 мин</b>
+                    <p>Звоните или оставляете заявку</p>
+                </div>
+                <div class="work-item">
+                    <div class="work-num">2</div>
+                    <b>2 мин</b>
+                    <p>Предварительный расчёт по телефону</p>
+                </div>
+                <div class="work-item">
+                    <div class="work-num">3</div>
+                    <b>20 мин</b>
+                    <p>Выезд специалиста по городу или области</p>
+                </div>
+                <div class="work-item">
+                    <div class="work-num">4</div>
+                    <b>5 мин</b>
+                    <p>Составляем договор купли-продажи</p>
+                </div>
+                <div class="work-item">
+                    <div class="work-num">5</div>
+                    <b>1 мин</b>
+                    <p>Оплата сразу наличными</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>Почему выбирают АвтоБрат</h2>
+                <p>Честный выкуп авто в Омске без рисков</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-item">
+                    <div class="why-icon">💰</div>
+                    <h3>Выгодная цена</h3>
+                    <p>Предлагаем до 90% от рыночной стоимости. Оценка прозрачная и честная.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">⚡</div>
+                    <h3>Скорость</h3>
+                    <p>Выкупаем авто за час. Выезжаем в любую точку Омска и области.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">📄</div>
+                    <h3>Официально</h3>
+                    <p>Договор купли-продажи. Всё законно. Вы получаете деньги сразу.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">🔄</div>
+                    <h3>Любое состояние</h3>
+                    <p>Битые, аварийные, кредитные, залоговые — выкупим любой автомобиль.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">📞</div>
+                    <h3>Поддержка 24/7</h3>
+                    <p>Работаем круглосуточно, без выходных. Звоните в любое время!</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">🤝</div>
+                    <h3>Без посредников</h3>
+                    <p>Вы платите 0 рублей комиссии. Все расходы мы берём на себя.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Остались <span>вопросы?</span></h2>
+            <p style="font-size:20px;">Позвоните прямо сейчас и получите оценку за 2 минуты!</p>
+            <a href="tel:+79081060920" class="cta-phone">+7 (908) 106-09-20</a>
+            <a href="#form" class="cta-btn">Оставить заявку</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 АвтоБрат | выкуп авто в Омске | быстро • дорого • надёжно</p>
+            <p>+7 (908) 106-09-20 | Круглосуточно | Омск</p>
+        </div>
+    </footer>
+
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="check-icon">✅</div>
+            <h3>Заявка принята!</h3>
+            <p>Мы уже получили вашу заявку и перезвоним в течение 15 минут.</p>
+            <p style="margin-top:15px;">
+                <a href="tel:+79081060920"
+                    style="color:#feaf06; font-weight:700; font-size:20px; text-decoration:none;">
+                    +7 (908) 106-09-20
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const VK_TOKEN = 'vk1.a.hU4AdwE6pNixNi-ypS9OZa_g4Kdp5SwGyCtdHXnvMQ0wP0b-wLQH8mZNAnt1Jxgb-M5hP8lJsaP5LzkP88jUzXkxVUUvQ1h-Deea1j5Tye4X4SjjdxlpCCHauTCNiqo-bOcs2M-o5K4RGW466jutnU_XqRr6SXIn9XQj8H7-MmsLqPC5QTStl2OBvg4E9vB-gCI0ss_6rGQGXAa_tOtcFw';
+        const VK_USER_ID = '820843481';
+        const VK_API_VERSION = '5.131';
+
+        document.getElementById('carForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = this.querySelector('input[name="name"]').value;
+            const phone = this.querySelector('input[name="phone"]').value;
+
+            const message = `🚗 Новая заявка с сайта АвтоБрат!
+        👤 Имя: ${name}
+        📞 Телефон: ${phone}
+        ⏰ Время: ${new Date().toLocaleString('ru-RU')}`;
+
+            const formData = new URLSearchParams();
+            formData.append('v', VK_API_VERSION);
+            formData.append('access_token', VK_TOKEN);
+            formData.append('user_id', VK_USER_ID);
+            formData.append('random_id', Date.now());
+            formData.append('message', message);
+
+            fetch('https://api.vk.com/method/messages.send', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Ответ ВК:', data);
+
+                    if (data.error) {
+                        console.error('Ошибка ВК API:', data.error);
+                        alert('Заявка не отправлена в ВК. Но мы вам перезвоним! Позвоните: +7 (908) 106-09-20');
+                    } else {
+                        document.getElementById('carForm').style.display = 'none';
+                        document.getElementById('successMsg').style.display = 'block';
+                        document.getElementById('successModal').classList.add('active');
+
+                        setTimeout(() => {
+                            document.getElementById('carForm').style.display = 'block';
+                            document.getElementById('successMsg').style.display = 'none';
+                            document.getElementById('carForm').reset();
+                        }, 5000);
+                    }
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                    document.getElementById('carForm').style.display = 'none';
+                    document.getElementById('successMsg').style.display = 'block';
+                    document.getElementById('successModal').classList.add('active');
+
+                    setTimeout(() => {
+                        document.getElementById('carForm').style.display = 'block';
+                        document.getElementById('successMsg').style.display = 'none';
+                        document.getElementById('carForm').reset();
+                    }, 5000);
+                });
+        });
+
+        function closeModal() {
+            document.getElementById('successModal').classList.remove('active');
+        }
+
+        document.getElementById('successModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        document.querySelectorAll('a[href="#form"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('form').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+
+</html>
